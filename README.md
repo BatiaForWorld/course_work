@@ -14,10 +14,19 @@
 
 ## Запуск тестов
 
-```bash
+```
   pytest
 ```
+## Запуск тестов с покрытием
 
+```bush
+  pytest --cov
+```
+## Запуск тесов с покрытием в HTML-формате
+
+```
+  pytest --cov=tests --cov-report=html
+```
 ## Требования
 - Python 3.12+
 - pandas
