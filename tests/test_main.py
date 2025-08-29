@@ -1,15 +1,16 @@
-import pandas as pd
 import sys
+
+import pandas as pd
+
 from src import main
+
 
 def test_main(monkeypatch, tmp_path):
     # Создаём тестовый Excel-файл
     test_file = tmp_path / "operations.xlsx"
-    df = pd.DataFrame({
-        "Дата операции": ["01.01.2022 12:00:00"],
-        "Категория": ["Супермаркеты"],
-        "Сумма операции": [100]
-    })
+    df = pd.DataFrame(
+        {"Дата операции": ["01.01.2022 12:00:00"], "Категория": ["Супермаркеты"], "Сумма операции": [100]}
+    )
     df.to_excel(test_file, index=False)
 
     # Переопределяем функцию чтения, чтобы использовать тестовый файл
@@ -17,6 +18,7 @@ def test_main(monkeypatch, tmp_path):
 
     # Перехватываем вывод
     from io import StringIO
+
     captured = StringIO()
     sys.stdout = captured
     main.main()
